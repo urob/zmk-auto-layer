@@ -59,3 +59,12 @@ activates a numbers layer for as long as only numbers and a few other keys are p
   };
 };
 ```
+
+## References
+
+- The behavior is inspired by Jonas Hietala's
+  [Numword](https://www.jonashietala.se/blog/2021/06/03/the-t-34-keyboard-layout/#where-are-the-digits)
+  for QMK
+- The implementation parallels the one of Joel Spadin's upgraded
+  [Caps-word](https://github.com/zmkfirmware/zmk/pull/1742)
+- My personal [zmk-config](https://github.com/urob/zmk-config) contains a more advanced example
