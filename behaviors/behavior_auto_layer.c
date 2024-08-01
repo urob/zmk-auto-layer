@@ -21,6 +21,7 @@
 #include <zmk/keymap.h>
 
 // backport zmk_key_param from #1742. Remove this once merged.
+#ifndef ZMK_KEY_PARAM_DECODE
 struct zmk_key_param {
     zmk_mod_flags_t modifiers;
     uint8_t page;
@@ -32,7 +33,7 @@ struct zmk_key_param {
         .modifiers = SELECT_MODS(param), .page = ZMK_HID_USAGE_PAGE(param),                        \
         .id = ZMK_HID_USAGE_ID(param),                                                             \
     }
-// end backport
+#endif // end backport
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
