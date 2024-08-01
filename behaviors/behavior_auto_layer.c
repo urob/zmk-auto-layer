@@ -57,14 +57,14 @@ static void activate_auto_layer(const struct device *dev) {
     struct behavior_auto_layer_data *data = dev->data;
     const struct behavior_auto_layer_config *config = dev->config;
 
-    // The hide_momentary_layers patch adds a second parameter to zmk_keymap_layer_activate.
-    // Ideally we'd be able to condition on whether the patch is applied or not. Here we just
-    // hope that everyone who applies the patch also sets the config option.
-    #if ZMK_TRACK_MOMENTARY_LAYER_PATCH
-        zmk_keymap_layer_activate(config->layers, false);
-    #else
-        zmk_keymap_layer_activate(config->layers);
-    #endif
+// The hide_momentary_layers patch adds a second parameter to zmk_keymap_layer_activate.
+// Ideally we'd be able to condition on whether the patch is applied or not. Here we just
+// hope that everyone who applies the patch also sets the config option.
+#if ZMK_TRACK_MOMENTARY_LAYER_PATCH
+    zmk_keymap_layer_activate(config->layers, false);
+#else
+    zmk_keymap_layer_activate(config->layers);
+#endif
     data->active = true;
 }
 
@@ -77,7 +77,7 @@ static void deactivate_auto_layer(const struct device *dev) {
 }
 
 static int on_auto_layer_binding_pressed(struct zmk_behavior_binding *binding,
-                                        struct zmk_behavior_binding_event event) {
+                                         struct zmk_behavior_binding_event event) {
     const struct device *dev = zmk_behavior_get_binding(binding->behavior_dev);
     struct behavior_auto_layer_data *data = dev->data;
 
@@ -91,7 +91,7 @@ static int on_auto_layer_binding_pressed(struct zmk_behavior_binding *binding,
 }
 
 static int on_auto_layer_binding_released(struct zmk_behavior_binding *binding,
-                                         struct zmk_behavior_binding_event event) {
+                                          struct zmk_behavior_binding_event event) {
     return ZMK_BEHAVIOR_OPAQUE;
 }
 
@@ -145,7 +145,7 @@ static bool auto_layer_is_numeric(uint16_t usage_page, zmk_key_t usage_id) {
 }
 
 static bool auto_layer_should_continue(const struct behavior_auto_layer_config *config,
-                                      struct zmk_keycode_state_changed *ev) {
+                                       struct zmk_keycode_state_changed *ev) {
     // Alpha keys do not deactivate the layer if ignore_numbers is set.
     if (config->ignore_alphas && auto_layer_is_alpha(ev->usage_page, ev->keycode)) {
         return true;
@@ -203,18 +203,18 @@ static int behavior_auto_layer_init(const struct device *dev) { return 0; }
                 ({.size = 0}))
 
 #define KP_INST(n)                                                                                 \
-    static const struct key_list auto_layer_continue_list_##n = PROP_KEY_LIST(n, continue_list);    \
+    static const struct key_list auto_layer_continue_list_##n = PROP_KEY_LIST(n, continue_list);   \
                                                                                                    \
-    static struct behavior_auto_layer_data behavior_auto_layer_data_##n = {.active = false};         \
-    static struct behavior_auto_layer_config behavior_auto_layer_config_##n = {                      \
-        .layers = DT_INST_PROP(n, layers),                                                            \
-        .continue_keys = &auto_layer_continue_list_##n,                                             \
-        .ignore_alphas = DT_INST_PROP(n, ignore_alphas),                                       \
-        .ignore_numbers = DT_INST_PROP(n, ignore_numbers),                                       \
-        .ignore_modifiers = DT_INST_PROP(n, ignore_modifiers),                                       \
+    static struct behavior_auto_layer_data behavior_auto_layer_data_##n = {.active = false};       \
+    static struct behavior_auto_layer_config behavior_auto_layer_config_##n = {                    \
+        .layers = DT_INST_PROP(n, layers),                                                         \
+        .continue_keys = &auto_layer_continue_list_##n,                                            \
+        .ignore_alphas = DT_INST_PROP(n, ignore_alphas),                                           \
+        .ignore_numbers = DT_INST_PROP(n, ignore_numbers),                                         \
+        .ignore_modifiers = DT_INST_PROP(n, ignore_modifiers),                                     \
     };                                                                                             \
-    BEHAVIOR_DT_INST_DEFINE(n, behavior_auto_layer_init, NULL, &behavior_auto_layer_data_##n,        \
-                            &behavior_auto_layer_config_##n, POST_KERNEL,                           \
+    BEHAVIOR_DT_INST_DEFINE(n, behavior_auto_layer_init, NULL, &behavior_auto_layer_data_##n,      \
+                            &behavior_auto_layer_config_##n, POST_KERNEL,                          \
                             CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_auto_layer_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(KP_INST)
