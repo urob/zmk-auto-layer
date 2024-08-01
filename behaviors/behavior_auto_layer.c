@@ -58,10 +58,9 @@ static void activate_auto_layer(const struct device *dev) {
     struct behavior_auto_layer_data *data = dev->data;
     const struct behavior_auto_layer_config *config = dev->config;
 
-// The hide_momentary_layers patch adds a second parameter to zmk_keymap_layer_activate.
-// Ideally we'd be able to condition on whether the patch is applied or not. Here we just
-// hope that everyone who applies the patch also sets the config option.
-#if ZMK_TRACK_MOMENTARY_LAYER_PATCH
+// We check whether the track-momentary-layers patch is enabled, because
+// zmk_keymap_layer_activate takes two arguments if it is.
+#if IS_ENABLED(CONFIG_ZMK_TRACK_MOMENTARY_LAYERS)
     zmk_keymap_layer_activate(config->layers, false);
 #else
     zmk_keymap_layer_activate(config->layers);
