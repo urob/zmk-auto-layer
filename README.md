@@ -1,4 +1,4 @@
-# ZMK-AUTO-LAYER
+# ZMK-AUTO-LAYER (ZERO-PARAM VERSION)
 
 This module adds an `auto-layer` behavior to ZMK. A layer activated by the behavior continues to be
 active for as long as keys in a configurable `continue-list` are pressed, and deactivates
