@@ -75,7 +75,7 @@ and all modifiers.
     nav_word: nav_word {
       compatible = "zmk,behavior-auto-layer";
       #binding-cells = <1>;
-      continue-list = <LEFT DOWN UP RIGHT PG_DN, PG_UP>;
+      continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP>;
       ignore-modifiers;
     };
   };
