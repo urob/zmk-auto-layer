@@ -47,7 +47,7 @@ activated.
 The module pre-configures a `num-word` behavior instance that activates a layer for as long as only
 numbers and a few other keys are pressed. To use it, source the definition at the top your keymap:
 
-```dts
+```c
 #include <behaviors/num_word.dtsi>
 ```
 
@@ -57,7 +57,7 @@ Then, add `&num_word NAV` anywhere to your keymap where `NAV` is the index of yo
 `DOT`, `COMMA`, `PLUS`, `MINUS`, `STAR`, `FSLH`, and `EQUAL`. To customize the `continue-list`,
 overwrite it in the keymap as follows:
 
-```dts
+```c
 &num_word {
   continue-list = <BSPC DEL DOT COMMA>;  // do not continue on PLUS, MINUS, STAR, FSLH, EQUAL
 };
@@ -69,7 +69,7 @@ Custom behavior instances can be defined using the general `auto-layer` behavior
 illustrates how to define a `nav-word` behavior that continues on arrow keys, `PG_UP`, `PG_DOWN`,
 and all modifiers.
 
-```dts
+```c
 / {
   behaviors {
     nav_word: nav_word {
