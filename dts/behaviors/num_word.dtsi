@@ -8,7 +8,10 @@
 
 / {
     behaviors {
-        /omit-if-no-ref/ num_word: num_word {
+#if ZMK_BEHAVIOR_OMIT(NUM_WORD)
+        /omit-if-no-ref/
+#endif
+        num_word: num_word {
             compatible = "zmk,behavior-auto-layer";
             #binding-cells = <1>;
             continue-list = <BACKSPACE DELETE DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
