@@ -236,7 +236,7 @@ static int behavior_auto_layer_init(const struct device *dev) {
                 }),                                                                                \
                 ({.size = 0}))
 
-#define KP_INST(n)                                                                                 \
+#define AL_INST(n)                                                                                 \
     static const struct key_list auto_layer_continue_list_##n = PROP_KEY_LIST(n, continue_list);   \
     static struct behavior_auto_layer_config behavior_auto_layer_config_##n = {                    \
         .continue_keys = &auto_layer_continue_list_##n,                                            \
@@ -248,4 +248,4 @@ static int behavior_auto_layer_init(const struct device *dev) {
                             &behavior_auto_layer_config_##n, POST_KERNEL,                          \
                             CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_auto_layer_driver_api);
 
-DT_INST_FOREACH_STATUS_OKAY(KP_INST)
+DT_INST_FOREACH_STATUS_OKAY(AL_INST)
