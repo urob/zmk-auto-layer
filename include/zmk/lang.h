@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <stdbool.h>
 
-void zmk_lang_set_active(uint8_t lang_id);
-uint8_t zmk_lang_get_active(void);
+void zmk_lang_set_state(bool is_eng);
+bool zmk_lang_get_state(void);

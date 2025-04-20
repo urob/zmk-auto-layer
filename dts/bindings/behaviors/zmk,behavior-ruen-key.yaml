@@ -1,0 +1,5 @@
+description: RuEn key behavior
+
+compatible: "zmk,behavior-ruen-key"
+
+include: two_param.yaml

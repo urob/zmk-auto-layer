@@ -1,11 +1,12 @@
 #include <zmk/lang.h>
+#include <stdbool.h>
 
-static uint8_t active_lang_id = 0;
+static bool is_eng = true;
 
-void zmk_lang_set_active(uint8_t lang_id) {
-    active_lang_id = lang_id;
+void zmk_lang_set_state(bool state) {
+    is_eng = state;
 }
 
-uint8_t zmk_lang_get_active(void) {
-    return active_lang_id;
+bool zmk_lang_get_state(void) {
+    return is_eng;
 }

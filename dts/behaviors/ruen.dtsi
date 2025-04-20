@@ -3,13 +3,13 @@
 
 / {
     behaviors {
-#if ZMK_BEHAVIOR_OMIT(RUEN)
-    /omit-if-no-ref/
-#endif
-        ruen: ruen {
-            compatible = "zmk,behavior-ruen";
+        ruen_switch: ruen_switch {
+            compatible = "zmk,behavior-ruen-switch";
             #binding-cells = <1>;
-            lang-id = <1>; // 0 = EN, 1 = RU (пример)
+        };
+        ruen_key: ruen_key {
+            compatible = "zmk,behavior-ruen-key";
+            #binding-cells = <2>;
         };
     };
-};
+}

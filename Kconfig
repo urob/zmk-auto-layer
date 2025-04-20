@@ -1,3 +1,0 @@
-config ZMK_BEHAVIOR_RUEN
-    bool
-    default y
