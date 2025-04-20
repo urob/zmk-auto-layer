@@ -1,5 +1,3 @@
-DT_COMPAT_ZMK_BEHAVIOR_AUTO_LAYER := zmk,behavior-auto-layer
-
-config ZMK_BEHAVIOR_AUTO_LAYER
+config ZMK_BEHAVIOR_RUEN
     bool
-    default $(dt_compat_enabled,$(DT_COMPAT_ZMK_BEHAVIOR_AUTO_LAYER))
+    default y

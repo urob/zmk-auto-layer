@@ -1,4 +1,4 @@
-name: zmk-auto-layer
+name: zmk-ruen
 build:
   cmake: .
   kconfig: Kconfig

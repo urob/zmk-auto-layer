@@ -1,0 +1,12 @@
+description: RuEn switch behavior
+
+compatible: "zmk,behavior-ruen"
+
+include: one_param.yaml
+
+properties:
+  lang-id:
+    type: int
+    required: true
+    description: |
+      Language ID to activate when pressed.
