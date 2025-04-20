@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdint.h>
 #include <stdbool.h>
 
 void zmk_lang_set_state(bool is_eng);
