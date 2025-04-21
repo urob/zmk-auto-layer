@@ -1,0 +1,15 @@
+description: RuEn key behavior
+
+compatible: "zmk,behavior-ruen-one-key"
+
+include: two_param.yaml
+
+properties:
+  to_en:
+    type: phandle-array
+    required: true
+    description: Hotkey to switch to Eng
+  to_ru:
+    type: phandle-array
+    required: true
+    description: Hotkey to switch to Rus

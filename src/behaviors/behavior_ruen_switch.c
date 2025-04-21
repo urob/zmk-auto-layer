@@ -7,6 +7,7 @@
 #include <zmk/lang.h>
 #include <zmk/events/keycode_state_changed.h>
 #include <zmk/endpoints.h>
+#include <zephyr/kernel.h>
 
 static int on_ruen_switch_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
     return ZMK_BEHAVIOR_OPAQUE;
