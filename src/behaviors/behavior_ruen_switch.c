@@ -4,6 +4,7 @@
 #include <drivers/behavior.h>
 #include <zmk/behavior.h>
 #include <zmk/lang.h>
+#include <zmk/events/keycode_state_changed.h>
 
 static int on_ruen_switch_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
     return ZMK_BEHAVIOR_OPAQUE;
