@@ -17,6 +17,7 @@ static int on_ruen_key_released(struct zmk_behavior_binding *binding, struct zmk
     bool is_eng = zmk_lang_get_state();
     zmk_key_t key = is_eng ? binding->param1 : binding->param2;
     zmk_hid_keyboard_release(key);
+    zmk_hid_keyboard_clear();
     return ZMK_BEHAVIOR_OPAQUE;
 }
 
