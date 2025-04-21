@@ -10,8 +10,8 @@
 #include <zephyr/kernel.h>
 
 struct ruen_one_key_config {
-    struct zmk_behavior_binding to_ens;
-    struct zmk_behavior_binding to_rus;
+    struct zmk_behavior_binding to_en;
+    struct zmk_behavior_binding to_ru;
 };
 
 static int on_ruen_one_key_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
@@ -29,10 +29,10 @@ static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct
     } else {
         const struct device *dev = binding->behavior_dev;
         const struct ruen_one_key_config *config = dev->config;
-        const struct zmk_behavior_binding *code1 = need ? &config->to_ens : &config->to_rus;
-        const struct zmk_behavior_binding *code2 = need ? &config->to_rus : &config->to_ens;
-        uint32_t encoded1 = code1->param1;
-        uint32_t encoded2 = code2->param1;
+        const struct zmk_behavior_binding *code1 = need ? &config->to_en : &config->to_ru;
+        const struct zmk_behavior_binding *code2 = need ? &config->to_ru : &config->to_en;
+        uint32_t encoded1 = ZMK_KEYCODE_ENCODE(code1->param1, 0);
+        uint32_t encoded2 = ZMK_KEYCODE_ENCODE(code2->param1, 0);
         zmk_hid_keyboard_clear();
         zmk_endpoints_send_report(HID_USAGE_KEY);
         zmk_lang_set_state(need);
@@ -62,8 +62,8 @@ static const struct behavior_driver_api behavior_ruen_one_key_driver_api = {
 
 #define RUEN_ONE_KEY_INST(n)                                                                    \
     static const struct ruen_one_key_config ruen_one_key_config_##n = {                         \
-        .to_en = ZMK_KEY_BEHAVIOR_BINDING_FROM_DT_INST(n, to_ens),                               \
-        .to_ru = ZMK_KEY_BEHAVIOR_BINDING_FROM_DT_INST(n, to_rus),                               \
+        .to_en = ZMK_KEY_BEHAVIOR_BINDING_FROM_DT_INST(n, to_en),                               \
+        .to_ru = ZMK_KEY_BEHAVIOR_BINDING_FROM_DT_INST(n, to_ru),                               \
     };                                                                                          \
     BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, &ruen_one_key_config_##n, NULL, POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_ruen_one_key_driver_api)
 
