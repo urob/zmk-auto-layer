@@ -5,7 +5,7 @@
     behaviors {
         ruen_switch: ruen_switch {
             compatible = "zmk,behavior-ruen-switch";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
         };
         ruen_key: ruen_key {
             compatible = "zmk,behavior-ruen-key";

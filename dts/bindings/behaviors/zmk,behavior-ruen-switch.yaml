@@ -2,4 +2,4 @@ description: RuEn switch behavior
 
 compatible: "zmk,behavior-ruen-switch"
 
-include: one_param.yaml
+include: two_param.yaml
