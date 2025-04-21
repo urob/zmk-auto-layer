@@ -3,21 +3,25 @@
 #include <zephyr/device.h>
 #include <drivers/behavior.h>
 #include <zmk/behavior.h>
+#include <zmk/hid.h>
 #include <zmk/lang.h>
 #include <zmk/events/keycode_state_changed.h>
+#include <zmk/endpoints.h>
 
 static int on_ruen_switch_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
     return ZMK_BEHAVIOR_OPAQUE;
 }
 
 static int on_ruen_switch_released(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
+    zmk_hid_keyboard_clear();
+    zmk_endpoints_send_report(HID_USAGE_KEY);
+    bool is_eng = binding->param1 != 0;
+    zmk_lang_set_state(is_eng);
     uint32_t code = binding->param2;
     raise_zmk_keycode_state_changed_from_encoded(code, true, event.timestamp);
     k_msleep(10);
     raise_zmk_keycode_state_changed_from_encoded(code, false, event.timestamp + 10);
     k_msleep(50);
-    bool is_eng = binding->param1 != 0;
-    zmk_lang_set_state(is_eng);
     return ZMK_BEHAVIOR_OPAQUE;
 }
 

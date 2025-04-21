@@ -3,7 +3,6 @@
 #include <zephyr/device.h>
 #include <drivers/behavior.h>
 #include <zmk/behavior.h>
-#include <zmk/hid.h>
 #include <zmk/lang.h>
 #include <zmk/events/keycode_state_changed.h>
 
