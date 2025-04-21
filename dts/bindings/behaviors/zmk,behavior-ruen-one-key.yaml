@@ -5,11 +5,19 @@ compatible: "zmk,behavior-ruen-one-key"
 include: two_param.yaml
 
 properties:
+  "#to_en-binding-cells":
+    type: int
+    required: true
+    const: 1
   to_en:
-    type: phandle
+    type: phandles
     required: true
-    description: Hotkey to switch to Eng
+    description: En hotkey
+  "#to_ru-binding-cells":
+    type: int
+    required: true
+    const: 1
   to_ru:
-    type: phandle
+    type: phandles
     required: true
-    description: Hotkey to switch to Rus
+    description: Ru hotkey
