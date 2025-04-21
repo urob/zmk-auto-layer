@@ -5,6 +5,7 @@
 #include <zmk/behavior.h>
 #include <zmk/hid.h>
 #include <zmk/lang.h>
+#include <zmk/events/keycode_state_changed.h>
 
 static int on_ruen_key_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
     bool is_eng = zmk_lang_get_state();
