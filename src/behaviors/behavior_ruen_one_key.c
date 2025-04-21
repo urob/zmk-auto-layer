@@ -27,7 +27,7 @@ static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct
         k_msleep(5);
         raise_zmk_keycode_state_changed_from_encoded(encoded, false, event.timestamp + 5);
     } else {
-        const struct device *dev = binding->behavior_dev;
+        const struct device *dev = zmk_behavior_get_binding(binding->behavior_dev);
         const struct ruen_one_key_config *config = dev->config;
         uint32_t encoded1 = need ? config->to_en : config->to_ru;
         uint32_t encoded2 = need ? config->to_ru : config->to_en;
@@ -63,6 +63,6 @@ static const struct behavior_driver_api behavior_ruen_one_key_driver_api = {
         .to_en = DT_INST_PROP(n, to_en),                               \
         .to_ru = DT_INST_PROP(n, to_ru),                               \
     };                                                                                          \
-    BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, &ruen_one_key_config_##n, NULL, POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_ruen_one_key_driver_api)
+    BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, NULL, &ruen_one_key_config_##n, POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_ruen_one_key_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(RUEN_ONE_KEY_INST)
