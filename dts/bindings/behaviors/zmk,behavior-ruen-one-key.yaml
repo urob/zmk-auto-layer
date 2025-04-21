@@ -9,7 +9,11 @@ properties:
     type: phandle-array
     required: true
     description: Hotkey to switch to Eng
+    specifier-space:
+      - param1
   to_ru:
     type: phandle-array
     required: true
     description: Hotkey to switch to Rus
+    specifier-space:
+      - param1
