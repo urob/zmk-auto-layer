@@ -25,4 +25,5 @@ static const struct behavior_driver_api behavior_ruen_key_driver_api = {
     .binding_released = on_ruen_key_released,
 };
 
-DT_INST_FOREACH_STATUS_OKAY(BEHAVIOR_DT_INST_DEFINE, 0, NULL, NULL, NULL, POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_ruen_key_driver_api)
+#define RUEN_KEY_INST(n) BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, NULL, NULL, POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_ruen_key_driver_api)
+DT_INST_FOREACH_STATUS_OKAY(RUEN_KEY_INST)
