@@ -31,8 +31,6 @@ static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct
         const struct ruen_one_key_config *config = dev->config;
         uint32_t encoded1 = need ? config->to_en : config->to_ru;
         uint32_t encoded2 = need ? config->to_ru : config->to_en;
-        uint32_t encoded1 = need ? config->to_en : config->to_ru;
-        uint32_t encoded2 = need ? config->to_ru : config->to_en;
         zmk_hid_keyboard_clear();
         zmk_endpoints_send_report(HID_USAGE_KEY);
         zmk_lang_set_state(need);
