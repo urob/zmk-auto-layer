@@ -1,38 +1,14 @@
-description: RuEn one‑key behavior
-
 compatible: "zmk,behavior-ruen-one-key"
 
-# Наследуем param1/param2 для самого behavior (две ячейки биндинга)
 include: two_param.yaml
 
 properties:
-  "#to_en-binding-cells":
-    type: int
-    required: true
-    const: 1
-
   to_en:
-    type: phandles
-    required: true
-    description: |
-      Hotkey behavior to send before switching to English
-      (должен быть ровно один &kp <KEY>)
-
-  "#to_ru-binding-cells":
     type: int
     required: true
-    const: 1
+    description: En hotkey
 
   to_ru:
-    type: phandles
+    type: int
     required: true
-    description: |
-      Hotkey behavior to send before switching to Russian
-      (должен быть ровно один &kp <KEY>)
-
-# Здесь маппим specifier‑cells (param1) для каждой phandles‑ссылки:
-to_en-binding-cells:
-  - param1
-
-to_ru-binding-cells:
-  - param1
+    description: Ru hotkey

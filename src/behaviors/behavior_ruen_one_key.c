@@ -10,8 +10,8 @@
 #include <zephyr/kernel.h>
 
 struct ruen_one_key_config {
-    struct zmk_behavior_binding to_en;
-    struct zmk_behavior_binding to_ru;
+    uint32_t to_en;
+    uint32_t to_ru;
 };
 
 static int on_ruen_one_key_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
@@ -29,10 +29,8 @@ static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct
     } else {
         const struct device *dev = binding->behavior_dev;
         const struct ruen_one_key_config *config = dev->config;
-        const struct zmk_behavior_binding *code1 = need ? &config->to_en : &config->to_ru;
-        const struct zmk_behavior_binding *code2 = need ? &config->to_ru : &config->to_en;
-        uint32_t encoded1 = code1->param1;
-        uint32_t encoded2 = code2->param1;
+        uint32_t encoded1 = need ? config->to_en : config->to_ru;
+        uint32_t encoded2 = need ? config->to_ru : config->to_en;
         zmk_hid_keyboard_clear();
         zmk_endpoints_send_report(HID_USAGE_KEY);
         zmk_lang_set_state(need);
