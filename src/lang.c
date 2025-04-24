@@ -1,12 +1,45 @@
+#include <zephyr/settings/settings.h>
 #include <zmk/lang.h>
 #include <stdbool.h>
+#include <string.h>
 
 static bool is_eng = true;
+static bool is_mac = false;
+
+bool zmk_lang_get_state(void) {
+    return is_eng;
+}
+
+bool zmk_lang_get_mac(void) {
+    return is_mac;
+}
 
 void zmk_lang_set_state(bool state) {
     is_eng = state;
 }
 
-bool zmk_lang_get_state(void) {
-    return is_eng;
+void zmk_lang_set_mac(bool state) {
+    is_mac = state;
+    settings_save_one("ruen/is_mac", &is_mac, sizeof(is_mac));
 }
+
+static int lang_settings_set(const char *key, size_t len, settings_read_cb read_cb, void *cb_arg) {
+    if (strcmp(key, "is_mac") == 0 && len == sizeof(is_mac)) {
+        read_cb(cb_arg, &is_mac, len);
+    }
+    return 0;
+}
+
+static struct settings_handler lang_settings_handler = {
+    .name = "ruen",
+    .h_set = lang_settings_set,
+};
+
+static int lang_init(const struct device *dev) {
+    settings_subsys_init();
+    settings_register(&lang_settings_handler);
+    settings_load_subtree("ruen");
+    return 0;
+}
+
+SYS_INIT(lang_init, APPLICATION, CONFIG_SETTINGS_INIT_PRIORITY);
