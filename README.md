@@ -23,7 +23,7 @@ Module `ruen` lets you send keycodes regardless of the active system language or
 
 ## Examples
 
-> [!INFO]  
+> [!NOTE]  
 > Examples assume macOS with English and Russian layouts.
 
 - `&ruen_switch 0 LG(N9)` — internal keyboard switches to Russian; sends `LGui+9` to switch the system to Russian.  
@@ -74,7 +74,7 @@ Module `ruen` lets you send keycodes regardless of the active system language or
 > [!WARNING]  
 > This module was only tested on macOS; Windows support is unverified.
 
-> [!INFO]  
+> [!NOTE]  
 > Because it’s still early alpha, a small code tweak is required for Windows.
 
 1. Configure separate hotkeys for Russian and English layouts in Windows.  
@@ -137,7 +137,7 @@ Module `ruen` lets you send keycodes regardless of the active system language or
 
 ## Примеры использования
 
-> [!INFO]
+> [!NOTE]
 > Примеры приведены для macOS с раскладками English и Russian.
 
 - `&ruen_switch 0 LG(N9)` — внутренняя раскладка клавиатуры меняется на русский, отправляет `LGui+9` для переключения на русский в системе.
@@ -188,7 +188,7 @@ Module `ruen` lets you send keycodes regardless of the active system language or
 > [!WARNING]
 > Модуль проверялся только на macOS; работоспособность на Windows не гарантируется.
 
-> [!INFO]
+> [!NOTE]
 > Поскольку модуль находится в ранней альфа‑версии, для Windows требуется небольшая правка кода.
 
 1. Настройте отдельные хоткеи для русской и английской раскладок.
