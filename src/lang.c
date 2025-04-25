@@ -44,4 +44,4 @@ static int ruen_init(const struct device *dev) {
     settings_load_subtree("ruen");
     return 0;
 }
-SYS_INIT(ruen_init, POST_KERNEL, CONFIG_SETTINGS_INIT_PRIORITY);
+SYS_INIT(ruen_init, PRE_KERNEL_2, CONFIG_SETTINGS_INIT_PRIORITY);
