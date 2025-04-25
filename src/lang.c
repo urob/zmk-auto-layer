@@ -37,11 +37,11 @@ static struct settings_handler ruen_settings_handler = {
     .h_set = ruen_settings_set,
 };
 
-static int ruen_init(const struct device *dev) {
-    ARG_UNUSED(dev);
+static int ruen_init(void) {
     settings_subsys_init();
     settings_register(&ruen_settings_handler);
     settings_load_subtree("ruen");
     return 0;
 }
+
 SYS_INIT(ruen_init, POST_KERNEL, CONFIG_SETTINGS_INIT_PRIORITY);
