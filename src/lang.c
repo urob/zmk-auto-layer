@@ -1,5 +1,3 @@
-#include <zephyr/init.h>
-#include <zephyr/device.h>
 #include <zephyr/settings/settings.h>
 #include <zmk/lang.h>
 #include <stdbool.h>
@@ -26,22 +24,17 @@ void zmk_lang_set_mac(bool state) {
 }
 
 static int ruen_settings_set(const char *key, size_t len, settings_read_cb read_cb, void *cb_arg) {
-    if (strcmp(key, "is_mac") == 0 && len == sizeof(is_mac)) {
+    if (!strcmp(key, "is_mac") && len == sizeof(is_mac)) {
         read_cb(cb_arg, &is_mac, len);
     }
     return 0;
 }
 
-static struct settings_handler ruen_settings_handler = {
-    .name = "ruen",
-    .h_set = ruen_settings_set,
-};
-
-static int ruen_init(void) {
-    settings_subsys_init();
-    settings_register(&ruen_settings_handler);
-    settings_load_subtree("ruen");
-    return 0;
-}
-
-SYS_INIT(ruen_init, POST_KERNEL, CONFIG_SETTINGS_INIT_PRIORITY);
+SETTINGS_STATIC_HANDLER_DEFINE(
+    ruen,               /* module name */
+    "ruen",             /* subtree */
+    NULL,               /* export_cb */
+    ruen_settings_set,  /* set_cb */
+    NULL,               /* commit_cb */
+    NULL                /* export_item_cb */
+);
