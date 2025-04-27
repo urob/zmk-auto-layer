@@ -11,5 +11,13 @@
             compatible = "zmk,behavior-ruen-key";
             #binding-cells = <2>;
         };
+        ruen_macos: ruen_macos {
+            compatible = "zmk,behavior-ruen-macos";
+            #binding-cells = <1>;
+        };
+        ruen_test: ruen_test {
+            compatible = "zmk,behavior-ruen-test";
+            #binding-cells = <2>;
+        };
     };
 };

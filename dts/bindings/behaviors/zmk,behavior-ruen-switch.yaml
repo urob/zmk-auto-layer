@@ -1,4 +1,4 @@
-description: RuEn switch behavior
+description: RuEn lang switch behavior
 
 compatible: "zmk,behavior-ruen-switch"
 

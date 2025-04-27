@@ -1,0 +1,5 @@
+description: RuEn macos mode switch behavior
+
+compatible: "zmk,behavior-ruen-macos"
+
+include: one_param.yaml

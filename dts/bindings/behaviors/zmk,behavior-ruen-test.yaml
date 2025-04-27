@@ -1,0 +1,5 @@
+description: RuEn macos test behavior
+
+compatible: "zmk,behavior-ruen-test"
+
+include: two_param.yaml
