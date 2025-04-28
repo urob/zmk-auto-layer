@@ -35,7 +35,7 @@ Module `ruen` lets you send keycodes regardless of the active system language or
 
 [More examples in my keymap](https://github.com/jewtvet-org/zmk-config-new/blob/main/config/cradio.keymap)
 
-## Usage on macOS
+## Usage on MacOS
 
 1. Install **MLSwitcher2** from Mac AppStore and configure separate hotkeys for Russian and English layouts.  
 2. In your `config/west.yml`, add these entries under `remotes` and `projects`:
@@ -66,41 +66,37 @@ Module `ruen` lets you send keycodes regardless of the active system language or
      to_ru = <0x8070026>;  # int code for your hotkey to switch to Russian (in this example: LG(N9))
    };
    ```
-4. Add your new keys into the same keymap file.  
-5. Build and flash the firmware to your keyboard.
+4. Add your new keys into the same keymap file.
+5. Add `&ruen_macos 1` to a distant key position in a rarely used layer.
+6. Build and flash the firmware to your keyboard.
+7. Press `&ruen_macos 1` to switch `ruen` to macOS compatibility mode.
 
-## Usage on Windows
+## Usage on Windows & Linux
 
 > [!WARNING]  
-> This module was only tested on macOS; Windows support is unverified.
+> This module was only tested on macOS; Windows & Linux support is unverified.
 
-> [!NOTE]  
-> Because it’s still early alpha, a small code tweak is required for Windows.
-
-1. Configure separate hotkeys for Russian and English layouts in Windows.  
-2. Fork this repository.  
-3. In `src/behaviors/behavior_ruen_one_key.c` and `src/behaviors/behavior_ruen_switch.c`, replace every `k_msleep(50);` with `k_msleep(5);`.  
-4. Commit and push your changes to your fork.  
-5. In your `config/west.yml`, add these entries under `remotes` and `projects`:
+1. Configure separate hotkeys for Russian and English layouts.  
+2. In your `config/west.yml`, add these entries under `remotes` and `projects`:
    ```yaml
    manifest:
      remotes:
        - name: zmkfirmware
          url-base: https://github.com/zmkfirmware
-       - name: <you>
-         url-base: https://github.com/<you>
+       - name: jewtvet
+         url-base: https://github.com/jewtvet
      projects:
        - name: zmk
          remote: zmkfirmware
          revision: main
          import: app/west.yml
        - name: zmk-ruen
-         remote: <you>
+         remote: jewtvet
          revision: main
      self:
        path: config
    ```
-6. In your `config/<your-keyboard>.keymap`, under `behaviors`, add these entries, update `to_en` and `to_ru` to your own layout-switch hotkeys:
+3. In your `config/<your-keyboard>.keymap`, under `behaviors`, add these entries, update `to_en` and `to_ru` to your own layout-switch hotkeys:
    ```yaml
    ruen_one_key: ruen_one_key {
      compatible = "zmk,behavior-ruen-one-key";
@@ -109,8 +105,8 @@ Module `ruen` lets you send keycodes regardless of the active system language or
      to_ru = <0x8070026>;  # int code for your hotkey to switch to Russian (in this example: LG(N9))
    };
    ```
-8. Add your custom keys to the keymap.  
-9. Build and flash the firmware to your keyboard.
+4. Add your new keys into the same keymap file. 
+5. Build and flash the firmware to your keyboard.
 
 # Russian
 
@@ -181,35 +177,31 @@ Module `ruen` lets you send keycodes regardless of the active system language or
    };
    ```
 4. Добавьте новые клавиши в раскладку в том же файле.
-5. Соберите и загрузите прошивку на клавиатуру.
+5. Добавьте `&ruen_macos 1` на удаленное место в редко используемом слое. 
+6. Соберите и загрузите прошивку на клавиатуру.
+7. Нажмите `&ruen_macos 1`, чтобы перевести `ruen` в режим совместимости с macOS.
 
-## Использование с Windows
+## Использование с Windows & Linux
 
 > [!WARNING]
-> Модуль проверялся только на macOS; работоспособность на Windows не гарантируется.
-
-> [!NOTE]
-> Поскольку модуль находится в ранней альфа‑версии, для Windows требуется небольшая правка кода.
+> Модуль проверялся только на macOS; работоспособность на Windows & Linux не гарантируется.
 
 1. Настройте отдельные хоткеи для русской и английской раскладок.
-2. Форкните этот репозиторий.
-3. В файлах `src/behaviors/behavior_ruen_one_key.c` и `src/behaviors/behavior_ruen_switch.c` замените все `k_msleep(50);` на `k_msleep(5);`.
-4. Закоммитьте и запушьте изменения в ваш форк.
-5. Добавьте следующие записи в `remotes` и `projects` в файле `config/west.yml`:
+2. Добавьте следующие записи в `remotes` и `projects` в файле `config/west.yml`:
    ```yaml
    manifest:
      remotes:
        - name: zmkfirmware
          url-base: https://github.com/zmkfirmware
-       - name: <you>
-         url-base: https://github.com/<you>
+       - name: jewtvet
+         url-base: https://github.com/jewtvet
      projects:
        - name: zmk
          remote: zmkfirmware
          revision: main
          import: app/west.yml
        - name: zmk-ruen
-         remote: <you>
+         remote: jewtvet
          revision: main
      self:
        path: config
@@ -219,8 +211,8 @@ Module `ruen` lets you send keycodes regardless of the active system language or
    ruen_one_key: ruen_one_key {
      compatible = "zmk,behavior-ruen-one-key";
      #binding-cells = <2>;
-     to_en = <0x8070025>; # int код хоткея для переключения на английский (в этом случае LG(N8))
-     to_ru = <0x8070026>; # int код хоткея для переключения на русский (в этом случае LG(N9))
+     to_en = <0x8070025>; # int код вашего хоткея для переключения на английский (в этом примере LG(N8))
+     to_ru = <0x8070026>; # int код вашего хоткея для переключения на русский (в этом примере LG(N9))
    };
    ```
 4. Добавьте новые клавиши в раскладку в том же файле.

@@ -11,8 +11,8 @@ static int on_ruen_macos_switch_pressed(struct zmk_behavior_binding *binding, st
 
 static int on_ruen_macos_switch_released(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
     bool is_macos = binding->param1 != 0;
-    if (is_macos != zmk_lang_get_macos()) {
-        zmk_lang_set_macos(is_macos);
+    if (is_macos != zmk_ruen_get_macos()) {
+        zmk_ruen_set_macos(is_macos);
     }
     return ZMK_BEHAVIOR_OPAQUE;
 }

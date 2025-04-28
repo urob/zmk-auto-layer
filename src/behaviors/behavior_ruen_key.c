@@ -7,14 +7,14 @@
 #include <zmk/events/keycode_state_changed.h>
 
 static int on_ruen_key_pressed(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
-    bool is_eng = zmk_lang_get_state();
+    bool is_eng = zmk_ruen_get_eng();
     uint32_t encoded = is_eng ? binding->param1 : binding->param2;
     raise_zmk_keycode_state_changed_from_encoded(encoded, true, event.timestamp);
     return ZMK_BEHAVIOR_OPAQUE;
 }
 
 static int on_ruen_key_released(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
-    bool is_eng = zmk_lang_get_state();
+    bool is_eng = zmk_ruen_get_eng();
     uint32_t encoded = is_eng ? binding->param1 : binding->param2;
     raise_zmk_keycode_state_changed_from_encoded(encoded, false, event.timestamp);
     return ZMK_BEHAVIOR_OPAQUE;

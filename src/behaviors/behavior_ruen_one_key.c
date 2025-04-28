@@ -19,8 +19,8 @@ static int on_ruen_one_key_pressed(struct zmk_behavior_binding *binding, struct 
 }
 
 static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct zmk_behavior_binding_event event) {
-    uint8_t wait = zmk_lang_get_macos() ? 50 : 5;
-    bool is_eng = zmk_lang_get_state();
+    uint8_t wait = zmk_ruen_get_macos() ? 50 : 5;
+    bool is_eng = zmk_ruen_get_eng();
     bool need = binding->param1 != 0;
     uint32_t encoded = binding->param2;
     if (need == is_eng) {
@@ -34,7 +34,7 @@ static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct
         uint32_t encoded2 = need ? config->to_ru : config->to_en;
         zmk_hid_keyboard_clear();
         zmk_endpoints_send_report(HID_USAGE_KEY);
-        zmk_lang_set_state(need);
+        zmk_ruen_set_eng(need);
         raise_zmk_keycode_state_changed_from_encoded(encoded1, true, event.timestamp);
         k_msleep(5);
         raise_zmk_keycode_state_changed_from_encoded(encoded1, false, event.timestamp + 5);
@@ -45,7 +45,7 @@ static int on_ruen_one_key_released(struct zmk_behavior_binding *binding, struct
         k_msleep(5);
         zmk_hid_keyboard_clear();
         zmk_endpoints_send_report(HID_USAGE_KEY);
-        zmk_lang_set_state(!need);
+        zmk_ruen_set_eng(!need);
         raise_zmk_keycode_state_changed_from_encoded(encoded2, true, event.timestamp + 15 + wait);
         k_msleep(5);
         raise_zmk_keycode_state_changed_from_encoded(encoded2, false, event.timestamp + 20 + wait);

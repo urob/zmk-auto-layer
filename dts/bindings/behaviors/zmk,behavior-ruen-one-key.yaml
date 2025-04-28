@@ -8,8 +8,8 @@ properties:
   to_en:
     type: int
     required: true
-    description: En hotkey
+    description: To English hotkey
   to_ru:
     type: int
     required: true
-    description: Ru hotkey
+    description: To Russian hotkey

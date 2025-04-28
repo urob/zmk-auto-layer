@@ -6,19 +6,19 @@
 static bool is_eng = true;
 static bool is_macos = false;
 
-bool zmk_lang_get_state(void) {
+bool zmk_ruen_get_eng(void) {
     return is_eng;
 }
 
-bool zmk_lang_get_macos(void) {
+bool zmk_ruen_get_macos(void) {
     return is_macos;
 }
 
-void zmk_lang_set_state(bool state) {
+void zmk_ruen_set_eng(bool state) {
     is_eng = state;
 }
 
-void zmk_lang_set_macos(bool state) {
+void zmk_ruen_set_macos(bool state) {
     is_macos = state;
     settings_save_one("ruen/is_macos", &is_macos, sizeof(is_macos));
 }

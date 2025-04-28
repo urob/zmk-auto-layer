@@ -3,10 +3,6 @@
 
 / {
     behaviors {
-        ruen_switch: ruen_switch {
-            compatible = "zmk,behavior-ruen-switch";
-            #binding-cells = <2>;
-        };
         ruen_key: ruen_key {
             compatible = "zmk,behavior-ruen-key";
             #binding-cells = <2>;
@@ -15,8 +11,8 @@
             compatible = "zmk,behavior-ruen-macos";
             #binding-cells = <1>;
         };
-        ruen_test: ruen_test {
-            compatible = "zmk,behavior-ruen-test";
+        ruen_switch: ruen_switch {
+            compatible = "zmk,behavior-ruen-switch";
             #binding-cells = <2>;
         };
     };
