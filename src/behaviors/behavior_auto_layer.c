@@ -144,7 +144,7 @@ static bool key_list_contains(const struct key_list *list, uint16_t usage_page, 
         const struct zmk_key_param *key = &list->keys[i];
 
         if (key->page == usage_page && key->id == usage_id &&
-            (key->modifiers & modifiers) == key->modifiers) {
+            (key->modifiers | modifiers) == key->modifiers) {
             return true;
         }
     }
