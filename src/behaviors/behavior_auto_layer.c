@@ -88,16 +88,11 @@ static void clear_auto_layer(struct active_auto_layer *auto_layer) {
 }
 
 static void activate_auto_layer(struct active_auto_layer *auto_layer) {
-#if IS_ENABLED(CONFIG_ZMK_TRACK_MOMENTARY_LAYERS)
-    // If patch is enabled, second argument signals whether layer change momentary or not
     zmk_keymap_layer_activate(auto_layer->layer, false);
-#else
-    zmk_keymap_layer_activate(auto_layer->layer);
-#endif // IS_ENABLED(CONFIG_ZMK_TRACK_MOMENTARY_LAYERS)
 }
 
 static void deactivate_auto_layer(struct active_auto_layer *auto_layer) {
-    zmk_keymap_layer_deactivate(auto_layer->layer);
+    zmk_keymap_layer_deactivate(auto_layer->layer, false);
     auto_layer->is_active = false;
 }
 
