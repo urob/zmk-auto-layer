@@ -88,11 +88,11 @@ static void clear_auto_layer(struct active_auto_layer *auto_layer) {
 }
 
 static void activate_auto_layer(struct active_auto_layer *auto_layer) {
-    zmk_keymap_layer_activate(auto_layer->layer, false);
+    zmk_keymap_layer_activate(auto_layer->layer, true);
 }
 
 static void deactivate_auto_layer(struct active_auto_layer *auto_layer) {
-    zmk_keymap_layer_deactivate(auto_layer->layer, false);
+    zmk_keymap_layer_deactivate(auto_layer->layer, true);
     auto_layer->is_active = false;
 }
 
