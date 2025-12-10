@@ -1,7 +1,0 @@
-zmk: layer_changed: layer 1 state 1 locked 0
-zmk: layer_changed: layer 1 state 1 locked 1
-zmk: 1 created new auto_layer
-zmk: usage_page 0x07 keycode 0x27 implicit_mods 0x00 explicit_mods 0x00
-zmk: Deactivating auto_layer for 0x07 - 0x04
-zmk: layer_changed: layer 1 state 0 locked 1
-zmk: usage_page 0x07 keycode 0x04 implicit_mods 0x00 explicit_mods 0x00
