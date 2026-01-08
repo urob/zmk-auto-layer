@@ -4,14 +4,10 @@ updates:
   - package-ecosystem: "github-actions"
     directories:
       - "/.github/workflows"
-      - "/setup-sdk"
-      - "/setup-zmk"
-      - "/templates"
-      - "/test"
     schedule:
-      interval: "monthly"
-    cooldown:
-      default-days: 14
+      interval: "weekly"
+    # cooldown:
+    #   default-days: 14
     groups:
       actions:
         patterns:
