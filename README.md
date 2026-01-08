@@ -21,11 +21,11 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.2 # set to desired version 
+      revision: v0.3 # Set to desired ZMK release.
       import: app/west.yml
     - name: zmk-auto-layer
       remote: urob
-      revision: v0.2 # set to same version as zmk above
+      revision: v0.3 # Should match ZMK release.
   self:
     path: config
 ```
