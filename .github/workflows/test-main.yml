@@ -1,4 +1,4 @@
-name: Run tests
+name: Run tests (main)
 
 on:
   workflow_dispatch:
@@ -14,10 +14,12 @@ on:
       - "include/**"
       - "src/**"
       - "tests/**"
+  schedule:
+    - cron: "0 21 * * 0,3" # Run every Sunday and Wednesday at 21:00 UTC
 
 jobs:
   test:
-    uses: urob/zmk-actions/.github/workflows/run-tests.yml@v4
+    uses: urob/zmk-actions/.github/workflows/run-tests.yml@12401d756af5e640fe29af8910d03d292d240cbb # v10.0.0
     with:
-      # Set to 'zephyr' for Zephyr SDK, or 'gnuarmemb' for GNU Arm Embedded.
       toolchain: gnuarmemb
+      zmk-version: main

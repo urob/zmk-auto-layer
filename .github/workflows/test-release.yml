@@ -1,0 +1,22 @@
+name: Run tests (release)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "dts/**"
+      - "include/**"
+      - "src/**"
+      - "tests/**"
+  pull_request:
+    paths:
+      - "dts/**"
+      - "include/**"
+      - "src/**"
+      - "tests/**"
+
+jobs:
+  test:
+    uses: urob/zmk-actions/.github/workflows/run-tests.yml@12401d756af5e640fe29af8910d03d292d240cbb # v10.0.0
+    with:
+      toolchain: gnuarmemb
