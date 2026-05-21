@@ -19,7 +19,7 @@ on:
 
 jobs:
   test:
-    uses: urob/zmk-actions/.github/workflows/run-tests.yml@21d0254c00fa8e85b20089df82dc5e96d5029bd4 # v11.0.5
+    uses: urob/zmk-actions/.github/workflows/run-tests.yml@2d0dce4d9584d7c43f6a7ef0aa9e04dcd2afa8fe # v12.0.0
     with:
       toolchain: gnuarmemb
       zmk-version: main
